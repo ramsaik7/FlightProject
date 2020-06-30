@@ -1,0 +1,117 @@
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<mat-form-field color="primary">
+    <mat-label>Flight</mat-label>
+    <mat-select (selectionChange)="onChange($event)">
+        <mat-option><mat-icon>flight_takeoff</mat-icon>None</mat-option>
+        <mat-option *ngFor="let flight of distinctFlights;let i = index" value={{i}}>{{flight}}</mat-option>
+    </mat-select>
+</mat-form-field>
+
+<div style="display: flex">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <p style="color: blue;font-family: Georgia, 'Times New Roman', Times, serif">Flights Available:</p> &nbsp; &nbsp;&nbsp;
+
+    <div *ngFor="let flight of flightId">&nbsp;&nbsp;
+        <mat-checkbox (change)="onCheck($event)" value={{flight.flightId}} color="primary">{{flight.flightId}}</mat-checkbox>
+    </div>
+
+</div>
+
+<div class="view">
+    <div class="detail">
+        <mat-card>
+            <ul>
+                <div *ngFor="let flightDetail of singleflight">
+                    <li>
+                        <b>Flight Id:</b>{{flightDetail.flightId}}</li>
+                    <li>
+                        <b>From:</b> {{flightDetail.departureFrom}}<mat-icon>flight_takeoff</mat-icon></li>
+                    <li>
+                        <b>To: </b>{{flightDetail.arrivalTo}}<mat-icon>flight_land</mat-icon></li>
+                    
+                    <li>
+                            <b>Duration:</b> {{flightDetail.duration}}<mat-icon>alarm</mat-icon></li>
+                    <li>
+                        <b>Arrival:</b>{{flightDetail.arrival}}
+                    </li>
+
+                    <li>
+                        <b>Depature:</b>{{flightDetail.departureTime}}
+                    </li>
+                    
+
+                    
+                </div>
+            </ul>
+        </mat-card>
+    </div>
+
+    <div class="clear"></div>
+    <br>
+
+    <mat-card>
+        <mat-tab-group>
+            <mat-tab label="Passengers">
+                <div class="passengers">
+                    <mat-card>
+
+                        <div class="example-container mat-elevation-z8">
+                            <mat-table #table [dataSource]="dataSource">
+
+                                <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+                                <!-- Position Column -->
+                                <ng-container matColumnDef="customerName">
+                                    <mat-header-cell *matHeaderCellDef>
+                                        <strong>Passenger Name</strong>
+                                    </mat-header-cell>
+
+                                    <mat-cell *matCellDef="let element"> {{element.customerName}} </mat-cell>
+                                </ng-container>
+
+                                <!-- Name Column -->
+                                <ng-container matColumnDef="AncillaryServices">
+                                    <mat-header-cell *matHeaderCellDef>
+                                        <strong>Ancillary Services</strong>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.ancillayService}} </mat-cell>
+                                </ng-container>
+
+                                <!-- Weight Column -->
+                                <ng-container matColumnDef="seatNumber">
+                                    <mat-header-cell *matHeaderCellDef>
+                                        <strong>Seat Number</strong>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element"> {{element.seatNumber}} </mat-cell>
+                                </ng-container>
+
+                                <ng-container matColumnDef="checkIN">
+                                    <mat-header-cell *matHeaderCellDef>
+                                        <strong>checkIn</strong>
+                                    </mat-header-cell>
+                                    <mat-cell *matCellDef="let element">
+                                        <button mat-button (click)="getPassenger(element)">
+                                            <mat-icon color="primary">airline_seat_recline_extra</mat-icon>
+                                        </button>
+                                    </mat-cell>
+                                </ng-container>
+
+                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                            </mat-table>
+                            <mat-paginator [pageSizeOptions]="[3,6,9,12]"></mat-paginator>
+
+                        </div>
+                    </mat-card>
+                </div>
+            </mat-tab>
+
+            <mat-tab label="Seats">
+                    <app-seat-layout [seatsLayout]="seatsLayout" [type]="displayColoredSeat" (trial)="getTrial($event)" (confirm)="getSelected($event)"></app-seat-layout>
+            </mat-tab>
+
+        </mat-tab-group>
+    </mat-card>
+    <div class="clear"></div>
+</div>

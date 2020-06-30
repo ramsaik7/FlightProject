@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Edit Ancillary Services
+  <strong></strong>
+</h1>
+<article mat-dialog-content>
+  <p>Ancillary Services</p>
+  <mat-form-field color="accent">
+    <input placeholder="ancillary service" matInput color="accent" [(ngModel)]="ancillary">
+  </mat-form-field>
+
+</article>
+<article mat-dialog-actions>
+  <button mat-button (click)="doAction()">Update</button>
+  <button mat-button color="warn" (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</article>

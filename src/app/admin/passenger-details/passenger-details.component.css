@@ -1,0 +1,19 @@
+.head{
+  color: white; font-size:16px;
+}
+.data{
+  font-size:14px;
+}
+
+.placeLine {
+  display:-webkit-inline-box
+  
+}
+
+input.mat-input-element {
+  color: white;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: rgb(216, 38, 68);
+}

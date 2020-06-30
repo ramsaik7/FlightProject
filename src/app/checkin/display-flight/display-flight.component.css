@@ -1,0 +1,11 @@
+
+
+.view { width:90%; margin: auto; padding: 10px 0%;}
+.clear { clear: both;}
+table{ width:100%; }
+tr,td { border: 1px solid #ccc;}
+td { padding: 5px 2%;}
+
+.detail ul { margin: 0px; padding:0px;}
+.detail li { display: inline-block; padding:5px 4%;}
+.detail img { width: 30px;} 

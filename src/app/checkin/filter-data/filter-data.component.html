@@ -1,0 +1,143 @@
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   <mat-form-field  color="primary">
+      <mat-label>Flight</mat-label>
+      <mat-select (selectionChange)="onChange($event)">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let flight of distinctFlights;let i = index" value={{i}}>{{flight}}</mat-option>
+    </mat-select>
+    </mat-form-field>
+
+    <div style="display: flex" >
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <p style="color: blue;font-family: Georgia, 'Times New Roman', Times, serif">Flights Available:</p> &nbsp; &nbsp;&nbsp;                                                
+          
+            <div *ngFor="let flight of flightId">&nbsp;&nbsp;
+                <mat-checkbox  (change)="onCheck($event)" value={{flight.flightId}} color="primary">{{flight.flightId}}</mat-checkbox>   
+           </div>
+              
+    </div>
+    
+<div class="view">
+        <div class="detail">   
+            <mat-card>
+                <ul>
+                    <div *ngFor="let flightDetail of singleflight">
+                    <li><b>Flight Id: </b>{{flightDetail.flightId}}</li>
+                    <li><b>From: </b>{{flightDetail.departureFrom}}</li>
+                    <li><b>To: </b>{{flightDetail.arrivalTo}}</li>
+                    <li><b>Arrival: </b>{{flightDetail.arrival}}</li>
+                    <li><b>Duration: </b>{{flightDetail.duration}}</li>
+                    </div>
+                </ul>
+            </mat-card>
+        </div>
+    
+        <div class="clear"></div>
+        <br>
+    
+        <mat-card>
+        <mat-tab-group>
+            <mat-tab label="Passengers">
+                <div class="passengers">
+             <mat-card>
+
+              
+<div class="example-container mat-elevation-z8">
+    <mat-table #table [dataSource]="dataSource">
+  
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="customerName">
+        <mat-header-cell *matHeaderCellDef> Passenger Name</mat-header-cell>
+   
+        <mat-cell *matCellDef="let element"> {{element.customerName}} </mat-cell>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <ng-container matColumnDef="AncillaryServices">
+        <mat-header-cell *matHeaderCellDef> Ancillary Services </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.ancillayService}} </mat-cell>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <ng-container matColumnDef="seatNumber">
+        <mat-header-cell *matHeaderCellDef> Seat Number </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.seatNumber}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="changeSeat">
+        <mat-header-cell *matHeaderCellDef> Seat Change </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <button mat-mini-fab color="primary" #tooltip="matTooltip" matTooltip="Seat Change" matTooltipHideDelay="10" (click)="openDialog('Update',element)"><mat-icon>edit</mat-icon></button> </mat-cell>
+      </ng-container>
+  
+  
+    
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <mat-paginator [pageSizeOptions]="[3,6,9,12]"></mat-paginator>
+  
+  </div>
+  
+            </mat-card>
+                </div>
+            </mat-tab>
+    
+            <mat-tab label="Filtered Passengers"> 
+
+                <br><br>
+        <div style="display: flex">
+            <p style="color:blue;font-family: Georgia, 'Times New Roman', Times, serif">Filter :</p> &nbsp; &nbsp;&nbsp;                                                
+             <mat-checkbox color="primary"  (change)="onClickCheckIn($event)">CheckIn</mat-checkbox>
+             &nbsp;
+             <mat-checkbox  color="primary" (change)="onClickInfant($event)"> Infant</mat-checkbox>
+             &nbsp;
+             <mat-checkbox color="primary" (change)="onClickWheelChair($event)">WheelChair</mat-checkbox>
+             &nbsp;
+        </div>
+
+        <div style="margin-top: 15px">
+
+                <div class="panel panel-default">
+                        <div class="panel-heading">
+                        
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered" >
+                                <thead>
+                                    <tr>
+                                            <th>Sl. No.</th>
+                                            <th>Name</th>
+                                            <th>Seat No.</th>
+                                            <th>Address</th>
+                                            <th>Passport</th>
+                                       
+                                    </tr>
+                                </thead>
+                                 <tbody>
+                                    
+                                                <tr *ngFor="let passenger of resultedPassenger | filterflights:someValue; let i=index"> 
+                                                <!-- <tr *ngFor="let passenger of resultedPassenger; let i=index"> -->
+                                                <td>{{i+1}}</td>
+                                                <td>{{passenger.customerName}}</td>
+                                                <td>{{passenger.seatNumber}}</td>
+                                          
+                                                <td>{{passenger.address}}</td>
+                                                <td>{{passenger.passport}}</td>
+                                                <!-- <td><div *ngFor="let ancillary of passenger.ancillayService">{{ancillary}} </div></td> -->
+                                            </tr>
+                                </tbody> 
+                            </table>
+                        </div>
+                    </div>
+                </div>   
+                    
+                    
+            </mat-tab>
+
+        </mat-tab-group>
+    </mat-card>
+        <div class="clear"></div>
+    </div> 

@@ -1,0 +1,48 @@
+<div class="sidenav_container" [@onSideNavChange]="sideNavState ? 'open' : 'close'">
+  <div fxLayout="column" fxLayoutGap="10px" style="height: 100%;">
+
+    <div class="user_menu">
+      <mat-nav-list>
+        <a mat-list-item>
+          <img class="jim" src="data:image/png;base64,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"
+            alt=""> &nbsp;
+          <span [@animateText]="linkText ? 'show' : 'hide'">{{ "Staff" }} </span>
+        </a>
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+    </div>
+
+    <div>
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['displayflight']" routerLinkActive="active">
+          <mat-icon style="padding-right:5px;">tables</mat-icon>
+          <span [@animateText]="linkText ? 'show' : 'hide'">checkIn/viewSeat</span>
+        </a>
+      </mat-nav-list>
+
+
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['filterdata']" routerLinkActive="active">
+          <mat-icon style="padding-right:5px;">filter</mat-icon>
+          <span [@animateText]="linkText ? 'show' : 'hide'">ChangeSeat/Filter</span>
+        </a>
+      </mat-nav-list>
+
+      <!-- 
+        <mat-nav-list>
+            <a mat-list-item [routerLink]="['']" routerLinkActive="active">
+              <mat-icon style="padding-right:5px;">edit</mat-icon>
+              <span [@animateText]="linkText ? 'show' : 'hide'">Edit Ancillary/Shopping/Special Meal</span>
+            </a>
+          </mat-nav-list> -->
+    </div>
+  </div>
+
+  <span class="spacer"></span>
+  <div fxLayout="row" fxLayoutAlign="end center" style="padding: 0px 10px;">
+    <button mat-icon-button (click)="onSinenavToggle()">
+      <mat-icon *ngIf="sideNavState">arrow_left</mat-icon>
+      <mat-icon *ngIf="!sideNavState">arrow_right</mat-icon>
+    </button>
+  </div>
+</div>

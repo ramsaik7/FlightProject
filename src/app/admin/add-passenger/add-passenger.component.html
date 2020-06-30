@@ -1,0 +1,97 @@
+<main class="container">
+  <h3 mat-dialog-title>Add Passenger</h3>
+
+  <form class="mat-dialog-content" #formControl="ngForm">
+
+
+    <section class="form">
+      <mat-form-field color="accent">
+
+        <mat-label>FlightId</mat-label>
+        <mat-select [(ngModel)]="data.flightId" name="flightId"  (selectionChange)="onChange($event)">
+          <mat-option *ngFor="let flightId of selectFlight" [value]="flightId">
+            {{flightId}}
+          </mat-option>
+        </mat-select>
+
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </section>
+    
+    <section class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="passenger Name" [(ngModel)]="data.customerName" name="passengerName"
+          required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </section>
+
+
+    <section class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="passenger Address" [(ngModel)]="data.address" name="address">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </section>
+
+    <section class="form">
+    <mat-form-field color="accent">
+        <mat-label>Choose your DOB</mat-label>
+        <input matInput #input class="form-control" placeholder="DOB" [matDatepicker]="picker" [(ngModel)]="data.DOB" name="DOB">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    </section>
+   
+
+    <!-- <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Seat Number" [(ngModel)]="data.seatNumber" name="seatNumber" required>
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div> -->
+
+    <section class="form">
+    <mat-form-field color="accent">
+        <mat-label>Seat Number</mat-label>
+        <mat-select [(ngModel)]="data.seatNumber" name="category">
+          <mat-option *ngFor="let seatNumber of seats" [value]="seatNumber">
+            {{seatNumber}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </section>
+
+
+
+    <section class="form">
+      <mat-form-field color="accent">
+        <input matInput #inputstate class="form-control" placeholder="passport" [(ngModel)]="data.passport" name="passport">
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+
+      </mat-form-field>
+    </section>
+
+    <section class="form">
+
+
+
+      <mat-form-field color="accent">
+        <mat-label>Category</mat-label>
+        <mat-select [(ngModel)]="data.category" name="category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{category}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+    </section>
+
+
+    <section mat-dialog-actions>
+      <button mat-button color="accent" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </section>
+  </form>
+</main>

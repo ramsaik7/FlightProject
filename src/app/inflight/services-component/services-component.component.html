@@ -1,0 +1,44 @@
+<div *ngIf="action==='Edit Ancillary'">
+  <mat-slide-toggle color="primary" [(ngModel)]="changeAncillary">Change Ancillay Service</mat-slide-toggle>
+  <div *ngIf="changeAncillary">
+    <mat-form-field>
+
+         <mat-select  [(ngModel)]="passenger.ancillayService" multiple>
+            <mat-option *ngFor="let ancillary of ancillaryService" [value]="ancillary">{{ancillary}}</mat-option>
+        </mat-select>
+      <!-- <input matInput color="primary" placeholder="ancillaryServices" [(ngModel)]="passenger.ancillayService"> -->
+    </mat-form-field>
+    <br>
+    <button mat-button mat-flat-button color="primary" (click)="editPassengerAncillary()">Update Ancillary</button>
+  </div>
+</div>
+
+
+<div *ngIf="action==='Edit Shopping'">
+  <mat-slide-toggle color="primary" [(ngModel)]="changeShopping">Change Shopping Service</mat-slide-toggle>
+  <div *ngIf="changeShopping">
+    <mat-form-field>
+        <mat-select  [(ngModel)]="passenger.shoppingItem" multiple>
+            <mat-option *ngFor="let shopping of shoppingItem" [value]="shopping">{{shopping}}</mat-option>
+        </mat-select>
+      <!-- <input matInput color="primary" placeholder="ancillaryServices" [(ngModel)]="passenger.shoppingItem"> -->
+    </mat-form-field>
+    <br>
+    <button mat-button mat-flat-button color="primary" (click)="editPassengerShoppingItem()">Update Shopping</button>
+  </div>
+</div>
+
+<div *ngIf="action==='Edit Meal'">
+  <mat-slide-toggle color="primary" [(ngModel)]="changeSpecialMeal">Change Meal Preference</mat-slide-toggle>
+  <div *ngIf="changeSpecialMeal">
+    <mat-form-field>
+
+        <mat-select  [(ngModel)]="passenger.specialMeal">
+            <mat-option *ngFor="let meal of specialMeal" [value]="meal">{{meal}}</mat-option>
+        </mat-select>
+      <!-- <input matInput color="primary" placeholder="ancillaryServices" [(ngModel)]="passenger.specialMeal"> -->
+    </mat-form-field>
+    <br>
+    <button mat-button mat-flat-button color="primary" (click)="editPassengerSpecialMeal()">Update Ancillary</button>
+  </div>
+</div>

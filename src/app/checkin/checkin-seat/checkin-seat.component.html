@@ -1,0 +1,25 @@
+<button  mat-fab color="primary" #tooltip="matTooltip" matTooltip="Back to check in" matTooltipHideDelay="10" (click)="backToCheckIn()"><mat-icon>reply</mat-icon></button>
+<br>
+<br>
+<mat-card>
+<div class="detail">   
+        <mat-card>
+            <ul>
+                <div><b>CHECK IN PASSENGERS:</b></div>
+                <br>
+                <div>
+                <li><b>Passenger Name:</b>{{rowPassenger.customerName}}</li>
+                <li><b>Seat Number:</b>{{rowPassenger.seatNumber}}</li>
+                <li><b>Check In:</b>{{rowPassenger.checkIn}}</li>
+               </div>
+            </ul>
+        </mat-card>
+
+        <br>
+        <mat-card>
+                <app-seat-layout [seatsLayout]="seatsLayout" [type]="checkInSeat" (trial)="getTrial($event)" (confirm)="getSelected($event)"></app-seat-layout >   
+        </mat-card>
+</div>
+
+</mat-card>
+

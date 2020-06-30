@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>Edit Passenger
+  <strong></strong>
+</h1>
+<section mat-dialog-content>
+  <p>passenger Name - {{passenger.customerName}}</p>
+  <mat-form-field color="accent">
+    <input placeholder="passenger name" matInput color="accent" [(ngModel)]="passenger.customerName">
+  </mat-form-field>
+
+  <mat-form-field color="accent">
+    <input placeholder="passport" matInput color="accent" [(ngModel)]="passenger.passport">
+  </mat-form-field>
+
+<!-- 
+  <mat-form-field color="accent">
+    <input placeholder="seat number" matInput color="accent" [(ngModel)]="passenger.seatNumber">
+  </mat-form-field> -->
+
+
+  <mat-form-field color="accent">
+    <input placeholder="address" matInput color="accent" [(ngModel)]="passenger.address">
+  </mat-form-field>
+
+
+</section>
+<section mat-dialog-actions>
+  <button mat-button (click)="doAction()">Update</button>
+  <button mat-button color="warn" (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</section>

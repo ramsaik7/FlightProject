@@ -1,0 +1,40 @@
+<div *ngIf="currentUser && !isAdmin" fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="header2">
+  <!-- <button mat-icon-button (click)="sidenav.toggle();">
+          <mat-icon>menu</mat-icon>
+        </button> -->
+
+  <button mat-stroked-button color="primary" routerLink="/checkin">Checkin</button> &nbsp;&nbsp;&nbsp;
+  <button mat-stroked-button color="primary" routerLink="/inflight">Inflight</button> &nbsp;&nbsp;&nbsp;
+  <!-- <button   mat-stroked-button color="primary"  routerLink="/">Home</button>  -->
+
+  <button class="logout" mat-stroked-button color="primary" (click)="logout()">Logout</button>
+
+  <span class="spacer"></span>
+
+</div>
+
+<div *ngIf="currentUser && isAdmin" fxFlex="row" fxLayoutAlign="center center" fxLayoutGap="10px" class="header">
+  <!-- <button mat-icon-button (click)="sidenav.toggle();">
+          <mat-icon>menu</mat-icon>
+        </button> -->
+
+  <!-- <button  mat-flat-button color="accent"  routerLink="/checkin">Checkin</button>  &nbsp;&nbsp;&nbsp; -->
+  <!-- 
+                 <button  mat-flat-button color="accent" routerLink="/">Home</button>  &nbsp;&nbsp;&nbsp; -->
+
+  <!-- <button  mat-flat-button color="accent"  routerLink="/admin" *ngIf="isAdmin">Admin</button> &nbsp;&nbsp;&nbsp; -->
+
+  <!-- &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; -->
+
+  <span>
+    <mat-icon>flight</mat-icon>
+    <strong>
+      <i>ADMIN</i> DASHBOARD</strong>
+  </span>
+  
+  <button class="logout" mat-flat-button color="accent" (click)="logout()">Logout</button>
+
+  <span class="spacer"></span>
+
+</div>
+<router-outlet></router-outlet>

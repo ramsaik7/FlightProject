@@ -1,0 +1,21 @@
+
+
+ <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Inflight">
+           
+<mat-card>
+        <mat-card-title>
+                <div style="margin-left:  40%;color: blue">Inflight Details</div>
+        </mat-card-title>
+        <mat-card-content>
+                <app-ancillary-passenger></app-ancillary-passenger>
+        </mat-card-content>
+</mat-card>
+
+</mat-tab>
+
+<mat-tab label="Meal Preference">
+        <app-seat-layout [seatsLayout]="seatsLayout" [type]="displayMealSeat" (trial)="getMeal($event)" (confirm)="getSelected($event)"></app-seat-layout>
+</mat-tab>
+
+</mat-tab-group>

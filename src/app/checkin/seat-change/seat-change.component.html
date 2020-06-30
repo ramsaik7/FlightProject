@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>Seat Change
+  <strong></strong>
+</h1>
+<div mat-dialog-content>
+  <p>passenger Name - {{passenger.customerName}}</p>
+  <!-- <mat-form-field>
+    <input placeholder="Seat Number" matInput [(ngModel)]="passenger.seatNumber">
+  </mat-form-field> -->
+
+  <mat-form-field>
+    <mat-label>Seat Number</mat-label>
+    <mat-select [(ngModel)]="passenger.seatNumber">
+      <mat-option *ngFor="let seatNumber of seats" [value]="seatNumber">
+        {{seatNumber}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="doAction()">Update</button>
+  <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>

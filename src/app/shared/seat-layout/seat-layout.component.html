@@ -1,0 +1,124 @@
+<div class="plane" *ngIf="type==='checkInSeat'">
+  <div style="margin-left: 70%">
+    <button mat-stroked-button  color="primary"  #tooltip="matTooltip" matTooltip="CheckIn" matTooltipHideDelay="10" (click)="done()">CheckIn</button>
+  </div>
+  <br><br>
+  <div>
+    <mat-grid-list cols="2" rowHeight="50px" gutterSize="50px">
+        <mat-grid-tile *ngFor="let tile of seatCheckIn" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+            {{tile.text}}
+        </mat-grid-tile>
+    </mat-grid-list>
+    <br><br>
+</div>
+  <ol class="cabin fuselage">
+    <li *ngFor="let seats of rows" class="row row--1">
+      <ol class="seats" type="A">
+        <li *ngFor="let seat of seats" class="seat">
+          <input (click)="seatAction(seat)" type="checkbox" [checked]="seatsLayout?.checked?.includes(seat)" [id]="seat" />
+          <label [for]="seat">{{seat}}</label>
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <br>
+  <br>
+
+</div>
+
+<div *ngIf="type==='displayColoredSeat'">
+  <br>
+  <br> &nbsp;&nbsp;&nbsp;
+
+  <button mat-stroked-button color="primary"  #tooltip="matTooltip" matTooltip="Display Seat" matTooltipHideDelay="10" (click)="getResultedSeat()">DisplaySeat</button>
+  <br><br><br>
+  <!-- <div>
+    <mat-grid-list cols="5" rowHeight="50px" gutterSize="50px">
+        <mat-grid-tile *ngFor="let tile of category" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+            {{tile.text}}
+        </mat-grid-tile>
+    </mat-grid-list>
+</div> -->
+
+<mat-card class="colourcode">
+<div class="green-one"></div>
+<div style="margin-left:  3px; margin-top :-3px;"><strong>Checked-In + Meal</strong></div>
+<div class="red-one"></div>
+<div style="margin-left:  3px; margin-top :-3px;"><strong>Checked-In + Wheel-Chair</strong></div>
+<div class="pink-one"></div>
+<div style="margin-left:  3px; margin-top :-3px;"><strong>Checked-In + Infant</strong></div>
+<!-- <div class="grey-one"></div> -->
+<!-- <div style="margin-left:  3px; margin-top :-3px;">Not Checked-In</div> -->
+</mat-card>
+  <div class="plane">
+    <div class="exit exit--front fuselage">
+    </div>
+    <ol class="cabin fuselage">
+      <li *ngFor="let seats of rows" class="row row--1">
+        <ol class="seats" type="A">
+          <li *ngFor="let seat of seats " class="seat" [ngClass]="{wheelchair:isWheel(seat),infant:isInfant(seat),meals:isMeals(seat)}">
+            <input type="checkbox" [checked]="seatsLayout?.booked?.includes(seat)" [id]="seat" /> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+            <label [for]="seat">{{seat}}</label>
+          </li>
+        </ol>
+      </li>
+    </ol>
+  </div>
+</div>
+
+
+
+
+<div *ngIf="type==='displayMealSeat'">
+    <br>
+    <br> &nbsp;&nbsp;&nbsp;
+  
+    <button mat-stroked-button color="primary"  #tooltip="matTooltip" matTooltip="Display Meal Seat" matTooltipHideDelay="10" (click)="getResultedSeat()">DisplayMealSeat</button>
+    <br><br><br>
+    <!-- <div>
+      <mat-grid-list cols="5" rowHeight="50px" gutterSize="50px">
+          <mat-grid-tile *ngFor="let tile of MealPreference" [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="tile.color">
+              {{tile.text}}
+          </mat-grid-tile>
+      </mat-grid-list>
+  </div> -->
+<mat-card class="colourcode">
+      
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+    
+
+          <div class="green-one"></div>
+    <div style="margin-left:  3px; margin-top :-3px;"><strong>Special Meal</strong></div>
+
+  <div class="grey-one"></div>
+      <div style="margin-left:  3px; margin-top :-3px;"><strong>Normal Meal</strong></div>
+
+
+   
+
+    </mat-card>
+      
+    <div class="plane">
+    
+    <div class="exit exit--front fuselage">
+      </div>
+      <ol class="cabin fuselage">
+        <li *ngFor="let seats of rows" class="row row--1">
+          <ol class="seats" type="A">
+            <li *ngFor="let seat of seats " class="seat" [ngClass]="{specialMeal:isSpecialMeal(seat),normalMeal:isNormalMeal(seat)}">
+              <input type="checkbox" [checked]="seatsLayout?.booked?.includes(seat)" [id]="seat" /> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+              <label [for]="seat">{{seat}}</label>
+            </li>
+          </ol>
+        </li>
+      </ol>
+    </div>
+  </div>
+

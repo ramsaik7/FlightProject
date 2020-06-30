@@ -1,0 +1,80 @@
+<br>
+<br>
+<div class="placeLine">
+  <mat-form-field color="primary">
+    <mat-label>Flight</mat-label>
+    <mat-select (selectionChange)="onChange($event)">
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let flight of distinctFlights;let i = index" value={{i}}>{{flight}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<div style="display: flex">
+
+  <p style="color:blue;font-family: Georgia, 'Times New Roman', Times, serif">Flights Available:</p> &nbsp; &nbsp;&nbsp;
+
+  <div *ngFor="let flight of myflight">&nbsp;&nbsp;
+    <mat-checkbox (change)="onCheck($event)" value={{flight.flightId}} color="primary">{{flight.flightId}}</mat-checkbox>
+  </div>
+</div>
+<br>
+<br>
+
+<!-- <button mat-stroked-button color="primary" (click)="ancillaryRequests()">Ancillary Requests</button> -->
+
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+
+
+    <ng-container matColumnDef="customerName">
+      <mat-header-cell *matHeaderCellDef> Passenger Name</mat-header-cell>
+
+      <mat-cell *matCellDef="let element"> {{element.customerName}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="ancillarySerivces">
+      <mat-header-cell *matHeaderCellDef> Ancillary Services </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.ancillayService}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.passport}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="passport">
+      <mat-header-cell *matHeaderCellDef> Passport </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.passport}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="seat">
+      <mat-header-cell *matHeaderCellDef> Seat Number </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.seatNumber}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="edit">
+      <mat-header-cell *matHeaderCellDef> Add/Update Services </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-icon-button #tooltip="matTooltip" matTooltip="Edit Ancillary" matTooltipHideDelay="10" color="primary" (click)="getPassengerAncillary('Edit Ancillary',element)">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" #tooltip="matTooltip" matTooltip="Edit Shopping Item" matTooltipHideDelay="10" (click)="getPassengerAncillary('Edit Shopping',element)">
+          <mat-icon>store</mat-icon>
+        </button>
+        <button mat-icon-button color="primary" #tooltip="matTooltip" matTooltip="Edit Meal Prefrence"  matTooltipHideDelay="10" (click)="getPassengerAncillary('Edit Meal',element)">
+          <mat-icon>local_dining</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator [pageSizeOptions]="[3,6,9,12]"></mat-paginator>
+</div>
