@@ -1,0 +1,22 @@
+node {
+  stage('Git-Checkout') {
+       url: 'https://bitbucket.org/devops-maq/maq-clientapp//'
+  }
+      
+  stage('npm install') {
+       sh label: '', script: 'npm install'
+  }
+  
+   stage('ng build') {
+       sh label: '', script: 'ng build --prod'
+  }
+  
+    stage('ng test'){
+        sh label: '', script: 'ng test --code-coverage'
+    }
+  
+  stage('Docker-Stage-Deployment') {
+       sh label: '', script: 'docker-compose up -d --build'
+  }
+  
+}
