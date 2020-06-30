@@ -1,0 +1,10 @@
+version: '2'
+ 
+services:
+devopsmaq:
+image: 'clientimage:${BUILD_NUMBER}'
+build: .
+container_name: 'clientapp'
+ports:
+ - '4200:4200'
+
